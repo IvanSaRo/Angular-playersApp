@@ -1,0 +1,87 @@
+<h1>Player <small>player name</small></h1>
+<hr />
+
+<div class="row text-right">
+  <div class="col" routerLink="/players">
+    <button class="btn btn-danger">
+      <i class="fa fa-arrow-left">Volver a inicio</i>
+    </button>
+  </div>
+</div>
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+    <form (ngSubmit)="guardar(form)" #form="ngForm">
+      <div class="form-group">
+        <label>Firebase ID</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Firebase ID"
+          name="id"
+          [(ngModel)]="player.id"
+          disabled="disabled"
+        />
+        <small class="form-text text-muted">Este campo se autogenera</small>
+      </div>
+
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          required
+          placeholder="Name"
+          name="name"
+          [(ngModel)]="player.name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Team</label>
+        <input
+          type="text"
+          class="form-control"
+          required
+          placeholder="Team"
+          name="team"
+          [(ngModel)]="player.team"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Status</label>
+        <br />
+
+        <button
+          class="btn btn-outline-success w-50"
+          type="button"
+          *ngIf="player.status"
+          (click)="player.status = false"
+        >
+          <i class="fa fa-smile-wink">
+            Active
+          </i>
+        </button>
+
+        <button
+          class="btn btn-outline-danger w-50"
+          type="button"
+          *ngIf="!player.status"
+          (click)="player.status = true"
+        >
+          <i class="fa fa-dizzy">
+            Retired
+          </i>
+        </button>
+        <hr />
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary w-25">
+            <i class="fa fa-save"></i>
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
